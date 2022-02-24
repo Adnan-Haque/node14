@@ -4,8 +4,14 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "aws-sdk": "^2.1080.0",
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
+    "multer": "^1.4.4",
+    "multer-s3": "^2.10.0",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.15"
   },
   "devDependencies": {},
