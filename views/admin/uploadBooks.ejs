@@ -1,7 +1,26 @@
 <h1>This is upload books</h1>
 
-<form action="/admin/uploadBooks" enctype="multipart/form-data" method="post">
-    <input type="file" name="ImageUpload">
-    <input type="file" name="ImageUpload">
+<button name="addImage" id="addButton"  onclick="add_more_field()">+</button>
+
+<form action="/admin/uploadBooks" enctype="multipart/form-data" id="imageForm"  method="post">
     <input type="submit">
+    <input type="text" name="title" placeholder="title">
+    <input type="text" name="desc" placeholder="Description">
+    <input type="number" name="avail" placeholder="Availability">
+    <input type="file" name="ImageUpload" accept="image/png , image/jpeg">
 </form>
+
+<script>
+    counter = 1
+    function add_more_field(){
+        if(counter <= 4){
+            counter += 1
+            html = '<input type="file" name="ImageUpload" accept="image/png , image/jpeg" >'
+            var form = document.getElementById('imageForm');
+            form.innerHTML += html;
+        }
+        else{
+            alert("cannot add more than 5 images");
+        }
+    }
+</script>

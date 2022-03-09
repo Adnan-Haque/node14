@@ -23,13 +23,35 @@ var upload = multer({
       bucket: bucketName,
       contentType: multers3.AUTO_CONTENT_TYPE,
       metadata: function (req, file, cb) {
+        // console.log("This is done!!");
         cb(null, {fieldName: file.fieldname});
       },
       key: function (req, file, cb) {
-        // console.log(req.body);
-        cb(null, 'image/'+Date.now().toString())
+        path = req.body.title
+        let filetype = file.mimetype.split("/")
+        console.log(filetype[-1])
+        cb(null, `${path}/`+Date.now().toString() + '.' + filetype[filetype.length - 1])
       }
     })
   })
 
   exports.upload = upload
+
+// getting images from s3.
+
+// async function getImages(title){
+//   try{
+//     console.log(title)
+//     const response = await s3.listObjectsV2({
+//       Bucket: bucketName,
+//       Prefix: `${title} /`
+//     }).promise();
+//     var href = this.request.httpRequest.endpoint.href;
+//     console.log(href)
+//     console.log(response.Contents);
+//   }
+//   catch (e){
+//     console.log(e)
+//   }
+//   }
+//   exports.getImages = getImages

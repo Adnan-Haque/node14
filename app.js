@@ -7,7 +7,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 
 app.use(bodyParser.json());
-
 const pool = require('./db');
 
 app.get("/", async (req, res) => {
