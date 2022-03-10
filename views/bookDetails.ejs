@@ -1,1 +1,8 @@
 <h1>This is book details</h1>
+
+
+<% data.forEach(function(ele){ %>
+        <h1><%= ele.Key%></h1>
+        <img src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.Key%>" alt="">
+    <% }) %>
+<img src="" alt="">

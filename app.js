@@ -6,17 +6,34 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   })); 
 
 
+const {getObj} = require('./s3')
+
 app.use(bodyParser.json());
 const pool = require('./db');
 
 app.get("/", async (req, res) => {
     try {
-        pool.query('select * from Books;' , function(err, results , fields){
+        pool.query('select * from Books;' , async function(err, results , fields){
             if(err){
                 console.log(err);
             }
             results = JSON.parse(JSON.stringify(results));
-            res.render("home.ejs" , {books : results})
+            // console.log(results)
+            const bookValues = await getBooks();
+            async function getBooks(){
+                let books = []
+                for (const book of results){
+                    const images = await getObj(book.title)
+                    // bookValues.push({images , title})
+                    // console.log(book.title)
+                    // console.log("starting exec \n")
+                    // console.log(images)
+                    books.push({images: images, title: book.title})
+                }
+                return books
+            }
+            console.log("this is book values " , bookValues)
+            res.render("home.ejs" , {books : results , bookValues: bookValues})
         });
     } catch (err) {
         console.log(err);

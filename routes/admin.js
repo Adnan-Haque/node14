@@ -13,7 +13,7 @@ adminRouter.get('/uploadBooks' , (req,res) => {
         const desc = req.body.desc;
         const avail = req.body.avail;
         console.log(title , desc , avail);
-        pool.query(`insert into Books (BookName , Description , Availability) values ('${title}' , '${desc}' , '${avail}') ;` , function(err, results , fields){
+        pool.query(`insert into Books (title , Description , Availability) values ('${title}' , '${desc}' , '${avail}') ;` , function(err, results , fields){
             if(err){
                 console.log(err);
             }

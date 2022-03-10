@@ -1,1 +1,8 @@
-<h1>This is the homepage</h1>
+<h1>This is the homepage now trying to get the book name and images</h1>
+
+
+<% bookValues.forEach(function(ele){ %>
+        <h1><%= ele.title%></h1>
+        <a href="books/<%= ele.title%>"><%= ele.title%></a>
+        <img src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images %>" alt="">
+    <% }) %>

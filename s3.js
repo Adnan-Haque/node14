@@ -39,19 +39,40 @@ var upload = multer({
 
 // getting images from s3.
 
-// async function getImages(title){
-//   try{
-//     console.log(title)
-//     const response = await s3.listObjectsV2({
-//       Bucket: bucketName,
-//       Prefix: `${title} /`
-//     }).promise();
-//     var href = this.request.httpRequest.endpoint.href;
-//     console.log(href)
-//     console.log(response.Contents);
-//   }
-//   catch (e){
-//     console.log(e)
-//   }
-//   }
-//   exports.getImages = getImages
+async function getImages(title){
+  try{
+    console.log("this is title " , title)
+    const response = await s3.listObjectsV2({
+      Bucket: bucketName,
+      Prefix: `${title}/`
+    }).promise();
+    // var href = this.request.httpRequest.endpoint.href;
+    // console.log(href)
+    return response.Contents
+  }
+  catch (e){
+    console.log(e)
+  }
+  }
+  exports.getImages = getImages
+
+
+async function getObj(title){
+  try{
+    console.log("this is title " , title)
+    const response = await s3.listObjectsV2({
+      Bucket: bucketName,
+      Prefix: `${title}/`,
+      MaxKeys: 1
+    }).promise();
+    // var href = this.request.httpRequest.endpoint.href;
+    // console.log(href)
+    // console.log(response.Contents[0].Key)
+    return response.Contents[0].Key
+  }
+  catch (e){
+    console.log(e)
+  }
+}
+
+exports.getObj = getObj
