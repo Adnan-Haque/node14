@@ -14,11 +14,18 @@ adminRouter.get('/uploadBooks' ,async (req,res) => {
         getGenres(results)
     });
     function getGenres(values){
-        values.forEach(element => {
-            valGenre.push(element)
-        });
+        if(Array.isArray(values)){
+            values.forEach(element => {
+                valGenre.push(element)
+            });
+            res.render("admin/uploadBooks.ejs" , {genre: valGenre});
+        }
+        else{
+            valGenre.push({values});
+            console.log(valGenre);
+            res.render("admin/uploadBooks.ejs" , {genre: valGenre});
+        }
         // console.log("this is genre" , valGenre);
-        res.render("admin/uploadBooks.ejs" , {genre: valGenre});
     }
     // console.log("this is genre" , valGenre)
 })
@@ -41,15 +48,26 @@ adminRouter.get('/uploadBooks' ,async (req,res) => {
                     console.log(err)
                 }
                 results = JSON.parse(JSON.stringify(results));
-                console.log(results)
+                // console.log(results)
                 // console.log(results[0].id )
-                genre.forEach(function(ele){
-                    pool.query(`insert into BookGenre (BookId , GenreId) values (${results[0].id},${ele})`)
-                })
+                if(Array.isArray(genre)){
+                    genre.forEach(function(ele){
+                        pool.query(`insert into BookGenre (BookId , GenreId) values (${results[0].id},${ele})`)
+                    })
+                    
+                }
+                else{
+                    // console.log("this is genre" , genre)
+                    pool.query(`insert into BookGenre (BookId , GenreId) values (${results[0].id},${genre})`, function(err){
+                        if(err){
+                            console.log(err);
+                        }
+                    })
+                }
             })
         });
         // console.log(req.body.genre);
-        res.redirect('/admin/uploadBooks');
+        res.redirect('/');
     } catch (err) {
         console.log(err);
     }

@@ -1,4 +1,5 @@
-
+<%- include('partials/header' , style = 'home.css') %>
+<%- include('partials/navbar')%>
 
 <p>
     <h1>Title: <%= values.title %></h1>
@@ -6,7 +7,6 @@
     <h5>writer: <%= values.writer%></h5>
     <h5>Available: <%= values.availability%></h5>
 </p> 
-
 <% images.forEach(function(ele){ %>
         <!-- <h1><%= ele.Key%></h1> -->
         <img style="max-width: 500px;" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.Key%>" alt="">

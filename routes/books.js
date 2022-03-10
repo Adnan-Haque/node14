@@ -14,7 +14,7 @@ booksRouter.get('/:title' , async (req,res) => {
             console.log(err)
         }
         results = JSON.parse(JSON.stringify(results));
-        console.log(results)
+        console.log("this is result" , results)
         res.render('bookDetails.ejs' , {images: data , values: results[0]})
     })
 })
