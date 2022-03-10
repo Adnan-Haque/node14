@@ -7,6 +7,14 @@
     <input type="text" name="title" placeholder="title">
     <input type="text" name="desc" placeholder="Description">
     <input type="number" name="avail" placeholder="Availability">
+    <input type="text" name="writer" placeholder="writer">
+    <input type="number" name="sold" placeholder="sold"> <br>
+
+    <% genre.forEach(function(ele){ %>
+        <input type="checkbox" id="<%= ele.id %>" name="genre" value="<%= ele.id %>">
+        <label for="<%= genre %>"> <%= ele.name %></label><br>
+    <% }) %>
+
     <input type="file" name="ImageUpload" accept="image/png , image/jpeg">
 </form>
 

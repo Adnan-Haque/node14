@@ -1,8 +1,17 @@
+<%- include('partials/header' , style = 'home.css') %>
+<%- include('partials/navbar')%>
 <h1>This is the homepage now trying to get the book name and images</h1>
 
 
 <% bookValues.forEach(function(ele){ %>
-        <h1><%= ele.title%></h1>
-        <a href="books/<%= ele.title%>"><%= ele.title%></a>
-        <img src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images %>" alt="">
+        <!-- <a href="books/<%= ele.title%>"><%= ele.title%></a>
+        <img style="max-width: 500px;" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images %>" alt=""> -->
+        <div class="card" style="width: 18rem;">
+            <img src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images %>" alt="">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;"><%= ele.title %></h5>
+              <a href="books/<%= ele.title%>" class="btn btn-primary" style = "width: 100%;">Open</a>
+            </div>
+          </div>
     <% }) %>
+

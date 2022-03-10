@@ -1,8 +1,14 @@
-<h1>This is book details</h1>
 
 
-<% data.forEach(function(ele){ %>
-        <h1><%= ele.Key%></h1>
-        <img src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.Key%>" alt="">
+<p>
+    <h1>Title: <%= values.title %></h1>
+    <h3>Description: <%= values.Description%></h3>
+    <h5>writer: <%= values.writer%></h5>
+    <h5>Available: <%= values.availability%></h5>
+</p> 
+
+<% images.forEach(function(ele){ %>
+        <!-- <h1><%= ele.Key%></h1> -->
+        <img style="max-width: 500px;" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.Key%>" alt="">
     <% }) %>
-<img src="" alt="">
+

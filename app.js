@@ -5,6 +5,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
   })); 
 
+app.set('view engine', 'ejs');
+app.use(express.static("public"));
 
 const {getObj} = require('./s3')
 
