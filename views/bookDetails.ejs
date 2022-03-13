@@ -1,16 +1,30 @@
 <%- include('partials/bookheader') %>
-<%- include('partials/navbar')%>
+<%- include('partials/navbarother')%>
 
 <div class="container">
     <% if(images.length == 1){ %>
-        <div class="carousel-inner">
-                <div class="carousel-item-active">
-                    <img class="d-block w-100" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= images[0].Key%>" alt="">
+        <div class="values-cont" style="display: flex; margin-top: 30px;">
+            <div class="image-cont" style="width: 90%;">
+                <img style="width: 100%;" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= images[0].Key%>" alt="">
+            </div>
+            <div class="values-book">
+                <h1>Title: <%= values.title %></h1>
+                <h4>by <%= values.writer%> (Author)</h4>
+                <hr>
+                <h5>Available: <%= values.availability%></h5>
+                <h5>Price: 300 rs</h5><hr>
+                <div class="btns">
+                    <button class="btn btn-outline-primary btn-block">Buy Now</button><br>
+                    <button class="btn btn-outline-primary btn-block">Add to Cart</button>
                 </div>
-                <h3>Description: <%= values.Description%></h3>
+                <hr>
+                <div>
+                    <h3>Description: <br><%= values.Description%></h3>
+                </div>
+            </div>
         </div>
     <%} else {%>
-    <div class="values-cont" style="display: flex;">
+    <div class="values-cont" style="display: flex; margin-top: 30px;">
         <div class="image-cont">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -33,7 +47,6 @@
                   </button>
             </div>
 
-        <% } %>
         </div>
         <div class="values-book">
             <h1>Title: <%= values.title %></h1>
@@ -50,6 +63,7 @@
                 <h3>Description: <br><%= values.Description%></h3>
             </div>
         </div>
+        <% } %>
     </div>
 </div>
 
