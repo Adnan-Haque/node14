@@ -1,17 +1,129 @@
 <%- include('partials/header' , style = 'home.css') %>
-<%- include('partials/navbar')%>
-<h1>This is the homepage now trying to get the book name and images</h1>
 
 
-<% bookValues.forEach(function(ele){ %>
-        <!-- <a href="books/<%= ele.title%>"><%= ele.title%></a>
-        <img style="max-width: 500px;" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images %>" alt=""> -->
-        <div class="card" style="width: 18rem;">
-            <img src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images %>" alt="">
-            <div class="card-body">
-              <h5 class="card-title" style="text-align: center;"><%= ele.title %></h5>
-              <a href="books/<%= ele.title%>" class="btn btn-primary" style = "width: 100%;">Open</a>
+<div class="backimage">
+  <%- include('partials/navbar')%>
+  <h1 class="heading-main">Book Store</h1>
+</div>
+
+<div class="container">
+  <div class="full-row">
+    <h1>Best Seller</h1>
+    <div class="row">
+      <% bestSeller.forEach((ele)=>{%>
+        <div class="col-md-6 col-lg-3 card-making">
+          <div class="card-skele">
+            <a href="books/<%= ele.title%>" class="card-act">
+              <img style="width: 200px; height: 300px;" class="card-image" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images%>" alt="..."> <br>
+              <p class="card-title"><%= ele.title%></p>
+            </a>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <div class="full-row">
+      <h1>Recent</h1>
+      <div class="row">
+        <% recent.forEach((ele)=>{%>
+          <div class="col-md-6 col-lg-3 card-making">
+            <div class="card-skele">
+              <a href="books/<%= ele.title%>" class="card-act">
+                <img style="width: 200px; height: 300px;" class="card-image" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images%>" alt="..."> <br>
+                <p class="card-title"><%= ele.title%></p>
+              </a>
             </div>
           </div>
-<% }) %>
+          <% }) %>
+        </div>
+      </div>
+  <div class="full-row">
+    <h1>Business</h1>
+    <div class="row">
+      <% business.forEach((ele)=>{%>
+        <div class="col-md-6 col-lg-3 card-making">
+          <div class="card-skele">
+            <a href="books/<%= ele.title%>" class="card-act">
+              <img style="width: 200px; height: 300px;" class="card-image" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images%>" alt="..."> <br>
+              <p class="card-title"><%= ele.title%></p>
+            </a>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  <div class="full-row">
+    <h1>Action</h1>
+    <div class="row">
+      <% action.forEach((ele)=>{%>
+        <div class="col-md-6 col-lg-3 card-making">
+          <div class="card-skele">
+            <a href="books/<%= ele.title%>" class="card-act">
+              <img style="width: 200px; height: 300px;" class="card-image" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images%>" alt="..."> <br>
+              <p class="card-title"><%= ele.title%></p>
+            </a>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  <div class="full-row">
+    <h1>Horror</h1>
+    <div class="row">
+      <% horror.forEach((ele)=>{%>
+        <div class="col-md-6 col-lg-3 card-making">
+          <div class="card-skele">
+            <a href="books/<%= ele.title%>" class="card-act">
+              <img style="width: 200px; height: 300px;" class="card-image" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images%>" alt="..."> <br>
+              <p class="card-title"><%= ele.title%></p>
+            </a>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <div class="full-row">
+      <h1>Biography</h1>
+      <div class="row">
+        <% biography.forEach((ele)=>{%>
+          <div class="col-md-6 col-lg-3 card-making">
+            <div class="card-skele">
+              <a href="books/<%= ele.title%>" class="card-act">
+                <img style="width: 200px; height: 300px;" class="card-image" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images%>" alt="..."> <br>
+                <p class="card-title"><%= ele.title%></p>
+              </a>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
 
+    <div class="full-row">
+      <h1>Science Fiction</h1>
+      <div class="row">
+        <% scienceFiction.forEach((ele)=>{%>
+          <div class="col-md-6 col-lg-3 card-making">
+            <div class="card-skele">
+              <a href="books/<%= ele.title%>" class="card-act">
+                <img style="width: 200px; height: 300px;" class="card-image" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.images%>" alt="..."> <br>
+                <p class="card-title"><%= ele.title%></p>
+              </a>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+</div>
+
+<style>
+  .backimage{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url("images/imagBack.jpg");
+    height: 100vh;
+  }
+  .heading-main{
+    color: white;
+    font-size: 200px;
+    text-align: center;
+    margin-top: 300px;
+  }
+</style>

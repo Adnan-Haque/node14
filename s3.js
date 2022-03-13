@@ -41,11 +41,12 @@ var upload = multer({
 
 async function getImages(title){
   try{
-    console.log("this is title " , title)
+    // console.log("this is title " , title)
     const response = await s3.listObjectsV2({
       Bucket: bucketName,
       Prefix: `${title}/`
     }).promise();
+    // console.log(response)
     // var href = this.request.httpRequest.endpoint.href;
     // console.log(href)
     return response.Contents
@@ -59,7 +60,7 @@ async function getImages(title){
 
 async function getObj(title){
   try{
-    console.log("this is title " , title)
+    // console.log("this is title " , title)
     const response = await s3.listObjectsV2({
       Bucket: bucketName,
       Prefix: `${title}/`,

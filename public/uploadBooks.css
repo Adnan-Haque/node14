@@ -1,0 +1,31 @@
+.form-group{
+    margin-top: 10px;
+}
+
+#sub-btn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-check{
+    margin-top: 20px;
+}
+
+#addButton{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: 900;
+    border-radius: 25%;
+}
+
+.imageUploading{
+    margin-top: 20px;
+}
+
+.forming{
+    margin-top: 30px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+}

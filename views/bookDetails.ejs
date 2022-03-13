@@ -1,14 +1,74 @@
-<%- include('partials/header' , style = 'home.css') %>
+<%- include('partials/bookheader') %>
 <%- include('partials/navbar')%>
 
-<p>
-    <h1>Title: <%= values.title %></h1>
-    <h3>Description: <%= values.Description%></h3>
-    <h5>writer: <%= values.writer%></h5>
-    <h5>Available: <%= values.availability%></h5>
-</p> 
-<% images.forEach(function(ele){ %>
-        <!-- <h1><%= ele.Key%></h1> -->
-        <img style="max-width: 500px;" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= ele.Key%>" alt="">
-    <% }) %>
+<div class="container">
+    <% if(images.length == 1){ %>
+        <div class="carousel-inner">
+                <div class="carousel-item-active">
+                    <img class="d-block w-100" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= images[0].Key%>" alt="">
+                </div>
+                <h3>Description: <%= values.Description%></h3>
+        </div>
+    <%} else {%>
+    <div class="values-cont" style="display: flex;">
+        <div class="image-cont">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item-active">
+                            <img src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= images[0].Key%>" class="d-block w-100" alt="">
+                    </div>
+                    <% for(var i = 1; i < images.length; i++){ %>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://booksbucket.s3.ap-south-1.amazonaws.com/<%= images[i].Key%>" alt="">
+                        </div>
+                    <% } %>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+            </div>
+
+        <% } %>
+        </div>
+        <div class="values-book">
+            <h1>Title: <%= values.title %></h1>
+            <h4>by <%= values.writer%> (Author)</h4>
+            <hr>
+            <h5>Available: <%= values.availability%></h5>
+            <h5>Price: 300 rs</h5><hr>
+            <div class="btns">
+                <button class="btn btn-outline-primary btn-block">Buy Now</button><br>
+                <button class="btn btn-outline-primary btn-block">Add to Cart</button>
+            </div>
+            <hr>
+            <div>
+                <h3>Description: <br><%= values.Description%></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .image-cont{
+        width: 500px;
+    }
+    .btn{
+        width: 200px;
+        border-radius: 5%;
+    }
+    .btns{
+        display: flex;
+    /* justify-content: end; */
+    flex-direction: column;
+    align-items: end;
+    }
+    .texting{
+        font-size: small;
+    }
+</style>
 
